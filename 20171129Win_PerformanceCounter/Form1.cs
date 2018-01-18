@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace _20171129Win_PerformanceCounter
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 100000; i++)
+            {
+                progressBar1.Value = i;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = "RAM: " + performanceCounter1.NextValue().ToString() + " MB";
+            progressBar2.Value = (int)performanceCounter1.NextValue();
+            label2.Text = "CPU: " + performanceCounter2.NextValue().ToString();
+            progressBar3.Value = (int)performanceCounter2.NextValue();
+            
+        }
+    }
+}
